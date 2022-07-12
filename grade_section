@@ -1,0 +1,30 @@
+create table grade_section
+(
+	grade_section_id serial,
+	grade int not null,
+	section_ char(1) not null,
+	Created_Date date not null,
+	Updated_By varchar(20) not null,
+	Updated_Date date not null,
+	foreign key (grade_section_id) references Fee_master (Fee_master_id)
+	
+)
+insert into grade_section
+(
+	grade,
+	section_,
+	Created_Date,
+	Updated_By,
+	Updated_Date
+	
+)
+values 
+(
+	1,
+	'A',
+	'2001-06-01',
+	'raja',
+	'2001-06-01'	
+
+
+);
