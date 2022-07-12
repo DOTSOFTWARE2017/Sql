@@ -1,0 +1,25 @@
+create table Fee_master 
+(
+	Fee_master_id serial ,
+	fee_type_name varchar(50) not null,
+	order_id serial not null primary key ,
+	Created_Date date not null,
+	Updated_By varchar(30) not null,
+	Updated_Date date not null,
+	foreign key (order_id) references student_allocation (student_admissions_id)
+)
+insert into Fee_master
+(
+	fee_type_name,
+	Created_Date,
+	Updated_By,
+	Updated_Date
+	
+)
+values
+(
+	'Admission_fees',
+	'2001-06-01',
+	'BASHA MANIKBASHA',
+	'2001-06-01'
+);
