@@ -1,0 +1,25 @@
+create table Years
+(
+	year_id serial,
+	Academic_years date not null,
+	Created_Date date not null,
+	Updated_By varchar(20) not null,
+	Updated_Date date not null,
+	foreign key (year_id) references Fee_master (Fee_master_id)
+	
+)
+insert into years
+(
+	Academic_years,
+	Created_Date,
+	Updated_By,
+	Updated_Date
+)
+
+values 
+(
+		'2001-06-01',
+		'2001-06-01',
+		'BILLA',
+		'2001-06-01'	
+);
