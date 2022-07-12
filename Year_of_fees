@@ -1,0 +1,33 @@
+create table Year_of_fees
+(
+	year_of_fees_id serial,
+	fee_type_name varchar(30) not null ,
+	academic_year date  not null,
+	Grade int not null ,
+	fee_amount int not null,
+	Fee_master_id serial ,
+	Created_Date date not null,
+	Updated_By varchar(20) not null,
+	Updated_Date date not null,
+	foreign key (Fee_master_id) references Fee_master(Fee_master_id)
+)
+insert into Year_of_fees
+(
+	fee_type_name,
+	academic_year,
+	Grade,
+	fee_amount,
+	Created_Date,
+	Updated_By,
+	Updated_Date
+)
+values
+(
+	'Admission_fees',
+	'2001-06-01',
+	1,
+	2500,
+	'2001-06-01',
+	'padaiyapa',
+	'2001-06-01'
+);
