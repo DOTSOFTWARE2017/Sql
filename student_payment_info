@@ -1,0 +1,56 @@
+create table student_payment_info 
+(
+	student_payment_info_id serial,
+	Student_admission_id varchar(20),
+	fee_master_id int not null,
+	payment_date date not null,
+	Actual_fees int not null,
+	amount_paid int not null,
+	academic_year date not null,
+	payment_mode varchar(20) not null,
+	Comment_s varchar(10) not null,
+	student_id int not null,
+	grade int not null,
+	refund int  not null,
+	Created_Date date not null,
+	Updated_By varchar(15) not null,
+	Updated_Date date not null,
+	foreign key(student_id) references Fee_master (Fee_master_id)
+)
+
+insert into student_payment_info
+(
+	Student_admission_id,
+	fee_master_id,
+	payment_date,
+	Actual_fees,
+	amount_paid,
+	academic_year,
+	payment_mode,
+	Comment_s,
+	student_id,
+	grade,
+	refund,
+	Created_Date,
+	Updated_By,
+	Updated_Date
+)
+values
+
+(
+	1,
+	1,
+	'2001-06-01',
+	25000,
+	18000,
+	'2001-06-01',
+    'cash',
+	'null',
+	1,
+	1,
+	18000,
+	'2001-06-01',
+	'KAALA',
+	'2001-06-01'
+	
+);
