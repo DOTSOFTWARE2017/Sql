@@ -1,0 +1,58 @@
+create table student_admission
+(
+	student_admission serial primary key,
+	student_id serial not null,
+	student_name varchar(30) not null,
+	DOB date not null,
+	gender varchar(4) not null ,
+	Email varchar(20) unique not null,
+	Admission_Date date not null,
+	academic_year date not null,
+	grade_id serial not null,
+	Previous_school_info varchar(50) not null,
+	father_name varchar(30) not null,
+	father_occupation varchar(20) not null,
+	address varchar(100) not null,
+	phone_number int not null,
+	Created_Date date not null,
+	Updated_By varchar (30) not null,
+	Updated_Date date not null	
+)
+
+insert into student_admission
+(
+	student_name,
+	DOB,
+	gender,
+	Email,
+	Admission_Date,
+	academic_year,
+	Previous_school_info,
+	father_name,
+	father_occupation,
+	address,
+	phone_number,
+	Created_Date,
+	Updated_By,
+	Updated_Date	
+)
+
+values
+
+(
+ 	'Padaiyapa',
+	'2000-01-24',
+	'male',
+	'annamalai@gmail.com',
+	'2001-01-01',
+	'2001-05-01',
+	'null',
+	'rajini',
+	'Conductor',
+	'Dubai,Dubai mainroad NO:10 Home vivekananda thearu  Dubai',
+	0123456789,
+	'2001-01-01',
+	'kabali',
+	'2001-01-01'
+);
+select * from student_admission
