@@ -1,0 +1,71 @@
+create table Emp_details 
+(
+		emp_no serial not null primary key,
+		emp_name varchar(20) not null,
+		emp_dob date not null,
+		emp_email_id varchar(20) unique not null,
+		emp_mobile_no int  unique not null
+)
+insert into Emp_details 
+(
+	emp_name,
+	emp_dob,
+	emp_email_id,
+	emp_mobile_no 
+	
+)
+values 
+(
+	'gugan',
+	'2000-05-02',
+	'jegan12@gmail.com',
+	12345679
+)
+   select * from  Emp_details
+-- drop table Emp_details
+
+Create table prj_list
+(
+	Prj_id int not null primary key,
+	prj_name varchar(30) not null,
+	prj_create_date date not null
+)
+
+--    select * from prj_list
+--    drop table prj_list
+
+insert into prj_list
+(
+	prj_id,
+	prj_name,
+	prj_create_date
+)
+values
+(
+	4,
+	'netflix',
+	'2022-07-16'  
+	
+);
+
+create table emp_prj
+(
+	emp_no int not null,
+	Prj_id int not null,
+	foreign key (emp_no) references Emp_details (emp_no), 
+	foreign key (Prj_id) references prj_list (Prj_id) ,
+	primary key  (emp_no,Prj_id)
+)
+-- drop table emp_prj
+select * from emp_prj
+insert into emp_prj
+(
+	emp_no,
+	Prj_id
+	
+)
+values 
+(
+	1,
+	4
+)
