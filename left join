@@ -1,0 +1,31 @@
+create table ccide 
+(
+    ID serial not null primary key ,
+    Name varchar(25) not null,
+)
+create table branch( b_id serial primary key not null,b_name varchar not null )
+insert into branch(b_name)
+values ('c');
+create table branch_ccide
+(
+    branch_no int not null,
+    id int not null,
+    foreign key (id) references ccide (ID),
+    foreign key (branch_no) references branch (b_id)
+)
+insert into branch_ccide
+(
+    branch_no,id
+)
+values
+(
+        1,
+        8
+)
+select * from branch_ccide
+select * from branch
+select * from ccide
+select ccide.id ,ccide.name ,branch.b_id,branch.b_name
+from ccide
+inner join branch_ccide on ccide.id=branch_ccide.id
+inner join branch on branch_ccide.branch_no=branch.b_id
