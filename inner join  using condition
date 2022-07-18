@@ -1,0 +1,78 @@
+create table emp_details 
+(
+	emp_no serial not null primary key,
+	emp_name varchar(25) not null,
+	dob date not null,
+	mobile_no int not null
+	
+)
+select *from emp_details 
+insert into emp_details 
+(
+	emp_name,
+	dob,
+	mobile_no
+)
+values 
+(
+	'jayashree',
+	'2001-01-24',
+	'123456789'
+)
+
+create table project_list
+(
+	prj_no int not null,
+	prj_name varchar not null,
+	prj_date date not null,
+	ref_no int primary key not null
+)
+
+insert into project_list
+(
+	prj_no,
+	prj_name,
+	prj_date,
+	ref_no
+)
+values 
+(
+	5,
+	'amazon_prime',
+	'2022-7-17',
+	5
+
+);
+select *from project_list
+
+create table staff_project
+(
+	emp_no int not null ,
+	prj_id int not null,
+	foreign key (emp_no) references emp_details (emp_no),
+	foreign key (prj_id) references project_list (ref_no),
+	unique (emp_no,prj_id)
+)
+insert into staff_project
+( 
+	emp_no,
+	prj_id
+	
+)
+values 
+(
+	1,
+	2
+)
+select * from staff_project sp 
+select *from project_list pl 
+select emp_details.emp_no,emp_details.emp_name,staff_project.prj_id ,project_list.prj_name 
+from emp_details 
+inner join staff_project  on staff_project.emp_no =emp_details.emp_no 
+inner join project_list  on project_list.prj_no = staff_project.prj_id 
+where staff_project.prj_id =1 and emp_details.emp_name='jegan'
+
+
+
+
+
