@@ -1,0 +1,35 @@
+select * from emp_details ed 
+select * from project_list pl 
+
+insert into emp_details 
+(
+	emp_name,
+	dob,
+	mobile_no 
+	
+)
+values 
+(
+	'rajini',
+	'12-12-2012',
+	0123456789
+
+)
+
+
+select emp_details.emp_no,emp_details.emp_name,emp_details.mobile_no,project_list.prj_no,project_list.prj_name 
+from emp_details
+left join project_list on  emp_details.emp_no = project_list.prj_no 
+
+
+select emp_details.emp_no,emp_details.emp_name,emp_details.mobile_no,project_list.prj_no,project_list.prj_name 
+from emp_details
+right outer join project_list on  emp_details.emp_no = project_list.prj_no 
+
+update emp_details 
+set emp_name ='kabil'
+where emp_no =3
+
+select e.emp_name as emp_name ,d.mobile_no as mobile_no 
+from emp_details e, emp_details d
+where e.emp_no <> d.emp_no 
