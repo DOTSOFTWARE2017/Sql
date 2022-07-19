@@ -1,0 +1,18 @@
+insert into emp_details 
+(
+	emp_name,
+	dob,
+	mobile_no 
+	
+)
+values 
+(
+	'rajini',
+	'12-12-2012',
+	0123456789
+
+)
+
+select emp_details.emp_no,emp_details.emp_name,emp_details.mobile_no,project_list.prj_no,project_list.prj_name 
+from emp_details
+left join project_list on  emp_details.emp_no = project_list.prj_no 
