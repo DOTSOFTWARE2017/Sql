@@ -1,0 +1,29 @@
+create table student (student_id serial not null primary key, name varchar not null)
+create table student_subject(sub_id int not null primary key,sub_name varchar not null)
+insert into student (name) values ('Dinesh')
+select * from student 
+insert into student_subject (sub_id,sub_name) values ('5','social_Science')
+select * from student_subject 
+SELECT COUNT(student_id), name
+FROM student 
+GROUP BY name
+order by name desc;
+create table student_mark(student_id int  not null ,English  int not null,Tamil  int not null,Maths int not null,Science  int not null,Social_science int not null,total int not null,foreign key(student_id) references student(student_id))
+select*from student_mark
+insert into student_mark (student_id,english,tamil,maths,science,social_science,total)values(9,79,59,49,49,79,315);
+
+select student_id,min(english)as english,min(tamil)as tamil,min(maths)as maths,min(science)as science,min(social_science)as social_science
+from student_mark
+group by student_id
+order by student_id asc;
+
+select student_id,max(english)as english,max(tamil)as tamil,max(maths)as maths,max(science)as science,max(social_science)as social_science
+from student_mark
+group by student_id
+order by student_id desc;
+
+select student_id,avg(english)as english,avg(tamil)as tamil,avg(maths)as maths,avg(science)as science,avg(social_science)as social_science
+from student_mark
+group by student_id
+order by student_id asc;
+
