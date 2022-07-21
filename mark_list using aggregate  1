@@ -1,0 +1,66 @@
+create table student (student_id serial not null primary key, name varchar not null)
+
+create table student_subject(sub_id int not null primary key,sub_name varchar not null)
+
+insert into student (name) values ('nithish')
+
+select * from student 
+
+insert into student_subject (sub_id,sub_name) values ('5','social_science')
+
+select * from student_subject 
+ 
+alter table student_subject
+add column ref_no serial not null
+
+create table student_mark
+(
+	student_id int  not null,
+	sub_id int not null,
+	mark int not null ,
+    foreign key(student_id) references student(student_id),
+    foreign key(sub_id) references student_subject(sub_id),
+    primary key (student_id,sub_id)
+)
+
+insert into student_mark
+(
+	student_id,sub_id,mark
+)
+values 
+(
+	6,5,81
+);
+
+select * from student_mark
+
+select * from student_subject ss 
+
+select
+	student.student_id,
+	student.name,
+	student_subject.sub_name as min_mark_sub,
+	min(mark) as min_mark,
+	student_subject.sub_name as max_mark_sub,
+	max(mark) as max_mark
+from
+	student
+join student_subject on
+	student_subject.ref_no = student.student_id
+join student_mark on
+	student.student_id = student_mark.sub_id
+group by
+	student.student_id,
+	student.name,
+	min_mark_sub,
+	max_mark_sub
+order by
+	student.student_id
+
+select min(mark), 
+
+select student_mark.student_id ,student_subject.sub_id ,student_subject.sub_name as subject, max (mark) as high
+from student 
+inner join student_subject on student_subject.ref_no=student.student_id
+inner join student_mark on student.student_id=student_mark.sub_id 
+group by student_mark.student_id ,student_mark.mark,student_subject.sub_id ,student_subject.sub_name
