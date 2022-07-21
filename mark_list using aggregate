@@ -1,0 +1,32 @@
+create table student (student_id serial not null primary key, name varchar not null)
+create table student_subject(sub_id int not null primary key,sub_name varchar not null)
+insert into student (name) values ('nithish')
+select * from student 
+insert into student_subject (sub_id,sub_name) values ('5','social_science')
+select * from student_subject 
+ 
+
+create table student_mark
+(
+	student_id int  not null,
+	sub_id int not null,
+	mark int not null ,
+    foreign key(student_id) references student(student_id),
+    foreign key(sub_id) references student_subject(sub_id),
+    primary key (student_id,sub_id)
+)
+insert into student_mark
+(
+	student_id,sub_id,mark
+)
+values 
+(
+	6,5,81
+);
+select * from student_mark
+
+select student_id,sub_id,min(mark) as mark 
+from student_mark
+where sub_id =1  
+group by student_id,sub_id
+order by mark asc;
