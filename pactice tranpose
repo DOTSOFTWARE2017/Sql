@@ -1,0 +1,202 @@
+select * from student 
+select * from student_mark
+select *from student_subject 
+create extension tablefunc;
+select * from 
+crosstab('
+select  s.student_id,s.name as SName,student_subject.sub_id,student_subject.sub_name,student_mark.mark from student s
+inner join student_mark on s.student_id=student_mark.student_id
+inner join student_subject on student_mark.sub_id=student_subject.sub_id')
+as ( SName  varchar ,Tamil int ,English int, Maths int ,Science int, Socialscience int)
+create table contact 
+(
+    User_name varchar  not null,
+    place varchar not null,
+    mobile_no int  not null,
+    email_id varchar not null
+)
+insert into contact 
+(
+    User_name,
+    place,
+    mobile_no,
+    email_id 
+)
+values 
+(
+    'user_4',
+    'selam',
+    123456789,
+    'user_4@gamil.com'
+)
+select * from contact 
+SELECT *
+FROM crosstab(
+    ' 
+  SELECT *
+FROM contact
+ORDER BY User_name ASC, place ASC;'
+) AS ct(mobile_no int ,salem varchar, karur varchar, dindukal varchar);
+select  user_name as Sname, place as dis, mobile_no as phone, email_id as Email from contact
+select * from 
+crosstab('
+select  user_name as Sname, place as dis, mobile_no as phone, email_id as Email from contact')
+as (  Karur varchar  ,covai varchar, dindukal varchar ,selam varchar, phone int)
+CREATE EXTENSION tablefunc;
+CREATE TABLE example (
+  id int,
+  key text,
+  value text
+);
+INSERT INTO example VALUES
+  (123, 'firstName', 'John'),
+  (123, 'lastName', 'Doe');
+  SELECT *
+FROM example
+ORDER BY id ASC, key ASC;
+SELECT *
+FROM crosstab(
+    'SELECT *
+     FROM example
+     ORDER BY id ASC, key ASC;'
+) AS ct(id INT, firstname TEXT, lastname TEXT);
+create table example_1
+(
+    sno int,
+    sname varchar,
+    age int 
+)
+insert into example_10
+(
+    sno,
+    sname,
+    age
+)
+values 
+(
+    2,
+    'user_2',
+    25
+)
+SELECT *
+     FROM example_1
+     ORDER BY sno ASC, age ASC;
+     update example_1 set sno = 1
+SELECT *
+FROM crosstab(
+    'SELECT *
+     FROM example_1 order by 1;'
+) AS mt(sno integer, user_1 int, user_2 int);
+update example_1 set sname = 'user2' where sname = 'user_2'
+update example_1 set age = 26 where sname = 'user2'
+create table school  
+(
+    reg_no int not null,
+    student_name  varchar not null,
+    primary key(reg_no)
+)
+create table sub_list 
+(
+    sub_no int not null primary key ,
+    sub_list varchar not null 
+)
+insert into school
+(
+    reg_no,
+    student_name
+)
+values
+(
+    5,
+    'student_5'
+)
+select * from school
+insert into sub_list 
+(
+    sub_no,
+    sub_list
+)
+values
+(
+    5,
+    'SocialScience'
+)
+create table student_mark 
+(
+    reg_no int not null,
+    sub_no int not null,
+    foreign key (reg_no) references school (reg_no)
+    foreign key ()
+)
+
+
+
+create table PAVB
+(
+	student_id int not null  primary key,
+	student_Name varchar not null
+)
+insert into PAVB
+(
+	
+	student_id,
+	student_Name
+
+)
+values 
+(
+	4,
+	'Naveen'
+)
+select * from PAVB
+
+create table PAVB_subject
+(
+	sub_no int not null primary key,
+	sub_list varchar not null
+)
+
+insert into PAVB_subject
+(
+	sub_no,
+	sub_list
+)
+values 
+(
+	5,
+	'SocialScience'
+)
+
+select * from PAVB_subject
+
+create table PAVB_student_subject
+(
+	student_id int not null,
+	sub_no int null ,
+	mark int not null,
+	foreign key (student_id) references PAVB (student_id),
+		foreign key (sub_no) references PAVB_subject(sub_no),
+		primary key (student_id,sub_no)
+
+)
+
+insert into PAVB_student_subject
+(
+	student_id,
+	sub_no,
+	mark
+	
+)
+values
+(
+	1,5,100
+)
+select * from PAVB_student_subject
+
+select * from pavb
+
+select * from PAVB_subject
+
+
+select student_id.pavb,student_name.pavb,student_id.pavb_student_subject from pavb 
+inner join pavb_student_subject on student_id.PAVB=student_id.pavb_student_subject
